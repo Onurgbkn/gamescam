@@ -1,5 +1,7 @@
-### DJANGO ###
-
+## DJANGO ##
 *.pyc
 db.sqlite3
 
+
+## ENV ##
+.env
