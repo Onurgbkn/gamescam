@@ -1,0 +1,5 @@
+### DJANGO ###
+
+*.pyc
+db.sqlite3
+
