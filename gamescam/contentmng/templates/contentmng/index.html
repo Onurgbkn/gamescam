@@ -1,0 +1,9 @@
+{% if latest_game_list %}
+    <ul>
+        {% for game in latest_game_list %}
+            <li><a href="/contentmng/{{ game.id }}/">{{ game.game_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p> There is no game!</p>
+{% endif %}
