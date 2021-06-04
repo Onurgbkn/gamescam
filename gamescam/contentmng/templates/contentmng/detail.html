@@ -1,0 +1,6 @@
+{{ game.game_name }}
+<ul>
+    {% for comment in game.comment_set.all %}
+        <li>{{ comment.comment_text }}</li>
+    {% endfor %}
+</ul>
