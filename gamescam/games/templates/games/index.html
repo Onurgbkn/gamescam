@@ -1,7 +1,7 @@
 {% if latest_games %}
     <ul>
         {% for game in latest_games %}
-            <li><a href="/games/{{ game.id }}">{{ game.game_name }}</a></li>
+            <li><a href="{% url 'games:detail' game.id %}">{{ game.game_name }}</a></li>
         {% endfor %}
     </ul>
 {% else %}

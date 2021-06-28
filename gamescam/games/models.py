@@ -9,7 +9,7 @@ class Game(models.Model):
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.game_name;
+        return self.game_name
 
 
 class Comment(models.Model):
@@ -18,4 +18,4 @@ class Comment(models.Model):
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.comment_text;
+        return self.comment_text

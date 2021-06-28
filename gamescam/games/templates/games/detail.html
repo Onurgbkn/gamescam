@@ -1,0 +1,19 @@
+<h1>{{ game.game_name }}</h1>
+<ul>
+    {% for comment in game.comment_set.all %}
+        <li>
+            {{ comment.comment_text }}
+        </li>
+    {% endfor %}
+</ul>
+
+<form action="{% url 'games:comment' game.id %}" method="post">
+    {% csrf_token %}
+
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" value="John"><br>
+    <label for="comment">Comment:</label><br>
+    <input type="text" id="comment" name="comment" value="lol"><br>
+    <input type="submit" value="Submit">
+    
+</form> 
