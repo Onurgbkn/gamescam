@@ -1,8 +1,13 @@
 <h1>{{ game.name }}</h1>
+{% load static %}
+<img src="{% static 'games/Gimgs/'%}{{game.slug}}.jpg" alt="My image" width="400" height="200">
+
+
+
 <ul>
     {% for comment in game.comment_set.all %}
         <li>
-            {{ comment.text }}
+            {{ comment.author }}: {{ comment.text }}
         </li>
     {% endfor %}
 </ul>
@@ -13,7 +18,7 @@
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" value="John"><br>
     <label for="comment">Comment:</label><br>
-    <input type="text" id="comment" name="comment" value="lol"><br>
+    <textarea name="comment" id="comment" cols="30" rows="5"></textarea><br>
     <input type="submit" value="Submit">
     
 </form> 

@@ -35,10 +35,14 @@ def detail(request, slug):
 
 def comment(request, game_id):
 
+    game = get_object_or_404(Game, pk=game_id)
+
     if request.method == "POST":
         form = CommentForm(request.POST)
 
         if form.is_valid():
-            Game.objects.get(pk=game_id).comment_set.create(comment_text = form.cleaned_data['comment'])
-
-    return HttpResponse('thanks')
+            game.comment_set.create(author = form.cleaned_data['name'], text = form.cleaned_data['comment'])
+    else:
+        form = CommentForm()
+        
+    return render(request, 'games/detail.html', {'game': game})

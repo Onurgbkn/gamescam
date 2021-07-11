@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.utils.text import slugify
+from django.utils import timezone
 
 
 
@@ -30,12 +31,12 @@ class Game(models.Model):
 class Comment(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE)
     author = models.CharField(max_length=50)
-    text = models.CharField(max_length=200)
+    text = models.TextField()
     likerate = models.IntegerField(default=0)
-    publish = models.DateTimeField()
+    publish = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.text
+        return '{}: {}'.format(self.author, self.text)
 
     class Meta:
-        ordering = ('-publish',)
+        ordering = ('publish',)

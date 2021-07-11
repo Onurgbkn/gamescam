@@ -13,5 +13,5 @@ class GameAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ('author', 'text', 'game', 'likerate')
+    list_display = ('author', 'text', 'game', 'likerate', 'publish')
     search_fields = ('author',)

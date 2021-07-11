@@ -2,6 +2,9 @@
     <ul>
         {% for game in latest_games %}
             <li><a href="{% url 'games:detail' game.slug %}">{{ game.name }}</a></li>
+
+            {% load static %}
+            <img src="{% static 'games/Gimgs/'%}{{game.slug}}.jpg" alt="My image" width="400" height="200">
         {% endfor %}
     </ul>
 {% else %}
