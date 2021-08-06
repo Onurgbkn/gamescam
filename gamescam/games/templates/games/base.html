@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html >
+<head>
+    <link rel="stylesheet" href="{% static 'games/style.css' %}">
+    <title>{% block title %} Gamescam {% endblock %}</title>
+</head>
+
+<body>
+    <div id="logo">
+        {% block logo %} Gamescam {% endblock logo %} 
+    </div>
+
+  <div id="searchbar">
+    {% block searchbar %}
+        
+        <input type="text" placeholder="Search..">
+    {% endblock searchbar %}
+  </div>
+
+  <div id="navbar">
+    {% block navbar %}
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="cat1.html">Cat 1</a></li>        
+            <li><a href="cat2.html">Cat 2</a></li>
+            <li><a href="cat1.html">Cat 3</a></li>        
+            <li><a href="cat2.html">Cat 4</a></li>
+            <li><a href="cat1.html">Cat 5</a></li>        
+            <li><a href="cat2.html">Cat 6</a></li>
+
+        </ul>
+    {% endblock navbar %}
+  </div>
+
+  <div id="content">
+    {% block content %}{% endblock content %}
+  </div>
+
+
+
+
+</body>
+</html>

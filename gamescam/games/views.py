@@ -11,7 +11,7 @@ from .forms import CommentForm
 
 def index(request):
     latest_games = Game.objects.order_by('-publish')
-    paginator = Paginator(latest_games, 1)
+    paginator = Paginator(latest_games, 6)
     
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
