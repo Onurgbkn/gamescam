@@ -1,4 +1,5 @@
 from django import template
+from . models import Game
 from django.shortcuts import render
 
 
@@ -6,4 +7,15 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, 'games/index.html', {})
+    
+    game_list = Game.objects.all()
+    
+    context = {
+        'game_list': game_list,
+    }
+    
+    return render(request, 'games/index.html', context)
+
+
+def gameplay(request, slug):
+    return render(request, 'games/gameplay.html', {})
