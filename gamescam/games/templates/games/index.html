@@ -5,18 +5,20 @@
 {% load static %}
 
 {% block content %}
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-9 bg-success">
+    
                 <div class="row row-cols-3">
                     {% if game_list %}
 
                         {% for game in game_list %}
                             <div class="col pb-3">
                                 <div class="card">
-                                    <img class="card-img-top" style="height: 10rem;" src="{{ game.thumbnail.url }}" alt="Card image cap">
+                                    <a href="{% url 'gameplay' game.slug %}">
+                                        <img class="card-img-top" style="height: 10rem;" src="{{ game.thumbnail.url }}" alt="Card image cap">
+                                    </a>
                                     <div class="card-body p-1">
-                                        <p class="card-text text-center mb-0"><b>{{ game.name }}</b></p>
+                                        <a href="{% url 'gameplay' game.slug %}">
+                                            <p class="card-text text-center mb-0"><b>{{ game.name }}</b></p>
+                                        </a>
                                         <div class="d-flex justify-content-center">
                                             <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
                                             <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
@@ -29,116 +31,7 @@
 
                     {% else %}
                         <p>No Games</p>
-                    {% endif %}
-                    
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                    <div class="col pb-3">
-                        <div class="card">
-                            <img class="card-img-top" style="height: 10rem;" src="https://thiscatdoesnotexist.com/" alt="Card image cap">
-                            <div class="card-body p-1">
-                                <p class="card-text text-center mb-0"><b>Some quick example</b></p>
-                                <div class="d-flex justify-content-center text-dark">
-                                    <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                    <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                    {% endif %}                    
                 </div>
-            </div>
-            <div class="col-3 bg-warning">fdasfdas</div>
-        </div>
-    </div>
+            
 {% endblock %}

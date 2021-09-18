@@ -4,9 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    {% load static %}
-
-    <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -19,6 +16,9 @@
     <!-- Fontawsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'games/css/style.css' %}">
+
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -30,7 +30,7 @@
       <nav class="navbar-expand-sm bg-dark navbar-dark">
         <div class="row">
           <div class="col-4 d-flex justify-content-center">
-            <a href="" class="navbar-brand"><img src="{% static 'games/images/logo.png' %}" alt="Logo" style="width:200px;"></a>
+            <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'games/images/logo.png' %}" alt="Logo" style="width:200px;"></a>
           </div>
           <div class="col-8">
             <form class="form-inline pt-3" action="/action_page.php">
@@ -83,14 +83,44 @@
             <a href="" class="nav-link">Link 7</a>
           </li>
         </ul>
+        {% block breadcrumb %}
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+          </ol>
+        {% endblock %}
         <!-- Breadcrumb -->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active" aria-current="page">Home</li>
-        </ol>
+        
       </nav>
-      <!-- Navbar End-->
-      {% block content %}
-      {% endblock %}
+
+      <!-- Content-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-9 bg-success">
+          {% block content %}
+          {% endblock %}
+          </div>
+          <!-- Sidebar-->
+          <div class="col-3 bg-warning">
+            <ul class="list-group">
+              <li class="list-group-item">First item</li>
+              <li class="list-group-item">Second item</li>
+              <li class="list-group-item">Third item</li>
+              <li class="list-group-item">First item</li>
+              <li class="list-group-item">Second item</li>
+              <li class="list-group-item">Third item</li>
+              <li class="list-group-item">First item</li>
+              <li class="list-group-item">Second item</li>
+              <li class="list-group-item">Third item</li>
+              <li class="list-group-item">First item</li>
+              <li class="list-group-item">Second item</li>
+              <li class="list-group-item">Third item</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
         <!-- Footer -->
       <footer class="page-footer bg-light pt-4">
 

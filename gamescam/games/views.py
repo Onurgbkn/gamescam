@@ -18,4 +18,12 @@ def index(request):
 
 
 def gameplay(request, slug):
-    return render(request, 'games/gameplay.html', {})
+    game = Game.objects.get(slug=slug)
+    similar_games = Game.objects.all()
+    
+    context = {
+        'game': game,
+        'similar_games': similar_games,
+    }
+
+    return render(request, 'games/gameplay.html', context)
