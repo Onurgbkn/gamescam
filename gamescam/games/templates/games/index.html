@@ -19,10 +19,13 @@
                                         <a href="{% url 'gameplay' game.slug %}">
                                             <p class="card-text text-center mb-0"><b>{{ game.name }}</b></p>
                                         </a>
-                                        <div class="d-flex justify-content-center">
-                                            <div class="py-1 px-3"><i class="far fa-eye">{{ game.viewcount }}</i></div>
-                                            <div class="py-1 px-3"><i class="far fa-thumbs-up">%{% widthratio game.likes game.dislikes 100 %}</i></div>
-                                            <div class="py-1 px-3">{{ game.created|timesince }} ago</div>
+                                        <a href="">
+                                            <p class="mb-0">{{ game.author.username }}</p>
+                                        </a>
+                                        <div class="d-flex">
+                                            <div class="py-1 px-2"><i class="far fa-eye">{{ game.viewcount }}</i></div>
+                                            <div class="py-1 px-2 mr-auto"><i class="far fa-thumbs-up">%{% widthratio game.likes game.dislikes 100 %}</i></div>
+                                            <div class="py-1">{{ game.age }} ago</div>
                                         </div>
                                     </div>
                                 </div>

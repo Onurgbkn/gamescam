@@ -6,6 +6,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files import File
 # IMAGE COMPRESS ============
+from django.utils.timesince import timesince
 
 
 STATES = (
@@ -30,12 +31,14 @@ class Game(models.Model):
     tags = models.ManyToManyField('Tag')
     
     def save(self, *args, **kwargs):
+        
 
-        if not self.slug:
+        if not self.slug or (self.slug not in self.thumbnail.name):
             new_image = self.compressimage(self.thumbnail)
             self.thumbnail = new_image
         
         self.slug = slugify(self.name) # add slug
+        
         
         super(Game, self).save(*args, **kwargs)
         
@@ -51,6 +54,11 @@ class Game(models.Model):
         img.save(imo, 'JPEG', quality=70, optimize=True)
         newImage = File(imo, name=slugify(self.name) + '.jpg')
         return newImage
+    
+    def age(self):
+        return timesince(self.created).split(', ')[0]
+        
+    
     
     
 
@@ -75,4 +83,7 @@ class Tag(models.Model):
     
     def __str__(self):
         return self.name
+    
+    def age(self):
+        return timesince(self.created).split(', ')[0]
     

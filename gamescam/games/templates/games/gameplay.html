@@ -19,12 +19,15 @@
         </div>
         <div class="card-body p-1">
             <p class="card-text text-center mb-0"><b>{{ game.name }}</b></p>
+            <a href="">
+                <p>{{ game.author.username }}</p>
+            </a>
             <div class="d-flex justify-content-center">
                 <div class="py-1 px-3"><i class="far fa-eye">{{ game.viewcount }}</i></div>
                 <div class="py-1 px-3"><i class="far fa-thumbs-up">%{% widthratio game.likes game.dislikes 100 %}</i></div>
                 <button type="button" class="btn btn-info"><i class="fas fa-thumbs-up"></i></button>
                 <button type="button" class="btn btn-danger"><i class="fas fa-thumbs-down"></i></button>
-                <div class="py-1 px-3">{{ game.created|timesince }}</div>
+                <div class="py-1 px-3">{{ game.age }} ago</div>
             </div>
         </div>
     </div>
@@ -40,7 +43,7 @@
 
             {% for similar_game in similar_games %}
                 <div class="col pb-3">
-                    <div class="card">
+                    <div class="card h-100">
                         <a href="{% url 'gameplay' similar_game.slug %}">
                             <img class="card-img-top" style="height: 7rem;" src="{{ similar_game.thumbnail.url }}" alt="Card image cap">
                         </a>
@@ -48,10 +51,13 @@
                             <a href="{% url 'gameplay' similar_game.slug %}">
                                 <p class="card-text text-center mb-0"><b>{{ similar_game.name }}</b></p>
                             </a>
+                            <a href="">
+                                <p class="mb-0">{{ similar_game.author.username }}</p>
+                            </a>
                             <div class="d-flex justify-content-center">
-                                <div class="py-1 px-3"><i class="far fa-eye">{{ similar_game.viewcount }}</i></div>
-                                <div class="py-1 px-3"><i class="far fa-thumbs-up">%{% widthratio similar_game.likes similar_game.dislikes 100 %}</i></div>
-                                <div class="py-1 px-3">{{ similar_game.created|timesince }}</div>
+                                <div class="py-1 pr-2"><i class="far fa-eye">{{ similar_game.viewcount }}</i></div>
+                                <div class="py-1 px-2 mr-auto"><i class="far fa-thumbs-up">%{% widthratio similar_game.likes similar_game.dislikes 100 %}</i></div>
+                                <div class="py-1">{{ similar_game.age }} ago</div>
                             </div>                           
                         </div>
                     </div>

@@ -2,6 +2,7 @@ from django import template
 from . models import Game
 from django.shortcuts import render
 from django.db.models import F # for the view count
+import random # for the random game order
 
 
 # Create your views here.
@@ -29,7 +30,7 @@ def gameplay(request, slug):
     similar_games = Game.objects.exclude(id=game.id)
     context = {
         'game': game,
-        'similar_games': similar_games,
+        'similar_games': random.sample(list(similar_games), 8),
     }
 
     return render(request, 'games/gameplay.html', context)
