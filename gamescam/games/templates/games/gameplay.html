@@ -20,9 +20,11 @@
         <div class="card-body p-1">
             <p class="card-text text-center mb-0"><b>{{ game.name }}</b></p>
             <div class="d-flex justify-content-center">
-                <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
+                <div class="py-1 px-3"><i class="far fa-eye">{{ game.viewcount }}</i></div>
+                <div class="py-1 px-3"><i class="far fa-thumbs-up">%{% widthratio game.likes game.dislikes 100 %}</i></div>
+                <button type="button" class="btn btn-info"><i class="fas fa-thumbs-up"></i></button>
+                <button type="button" class="btn btn-danger"><i class="fas fa-thumbs-down"></i></button>
+                <div class="py-1 px-3">{{ game.created|timesince }}</div>
             </div>
         </div>
     </div>
@@ -47,10 +49,10 @@
                                 <p class="card-text text-center mb-0"><b>{{ similar_game.name }}</b></p>
                             </a>
                             <div class="d-flex justify-content-center">
-                                <div class="py-1 px-3"><i class="far fa-eye"> 3000</i></div>
-                                <div class="py-1 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                <div class="py-1 px-3"><i class="far fa-comments"> 9</i></div>
-                            </div>
+                                <div class="py-1 px-3"><i class="far fa-eye">{{ similar_game.viewcount }}</i></div>
+                                <div class="py-1 px-3"><i class="far fa-thumbs-up">%{% widthratio similar_game.likes similar_game.dislikes 100 %}</i></div>
+                                <div class="py-1 px-3">{{ similar_game.created|timesince }}</div>
+                            </div>                           
                         </div>
                     </div>
                 </div>

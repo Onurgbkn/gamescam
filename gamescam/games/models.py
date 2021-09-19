@@ -30,13 +30,15 @@ class Game(models.Model):
     tags = models.ManyToManyField('Tag')
     
     def save(self, *args, **kwargs):
+
+        if not self.slug:
+            new_image = self.compressimage(self.thumbnail)
+            self.thumbnail = new_image
+        
         self.slug = slugify(self.name) # add slug
         
-        new_image = self.compressimage(self.thumbnail)
-        self.thumbnail = new_image
-        
         super(Game, self).save(*args, **kwargs)
-
+        
     
     def __str__(self):
         return self.name

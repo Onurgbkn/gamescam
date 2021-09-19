@@ -20,9 +20,9 @@
                                             <p class="card-text text-center mb-0"><b>{{ game.name }}</b></p>
                                         </a>
                                         <div class="d-flex justify-content-center">
-                                            <div class="py-2 px-3"><i class="far fa-eye"> 3000</i></div>
-                                            <div class="py-2 px-3"><i class="far fa-thumbs-up"> %70</i></div>
-                                            <div class="py-2 px-3"><i class="far fa-comments"> 9</i></div>
+                                            <div class="py-1 px-3"><i class="far fa-eye">{{ game.viewcount }}</i></div>
+                                            <div class="py-1 px-3"><i class="far fa-thumbs-up">%{% widthratio game.likes game.dislikes 100 %}</i></div>
+                                            <div class="py-1 px-3">{{ game.created|timesince }} ago</div>
                                         </div>
                                     </div>
                                 </div>
