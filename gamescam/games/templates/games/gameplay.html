@@ -42,7 +42,7 @@
         {% if similar_games %}
 
             {% for similar_game in similar_games %}
-                <div class="col pb-3">
+                <div class="col pb-3 px-2">
                     <div class="card h-100">
                         <a href="{% url 'gameplay' similar_game.slug %}">
                             <img class="card-img-top" style="height: 7rem;" src="{{ similar_game.thumbnail.url }}" alt="Card image cap">
@@ -56,7 +56,7 @@
                             </a>
                             <div class="d-flex justify-content-center">
                                 <div class="py-1 pr-2"><i class="far fa-eye">{{ similar_game.viewcount }}</i></div>
-                                <div class="py-1 px-2 mr-auto"><i class="far fa-thumbs-up">%{% widthratio similar_game.likes similar_game.dislikes 100 %}</i></div>
+                                <div class="py-1 px-2 mr-auto"><i class="far fa-thumbs-up">%{{ similar_game.likerate }}</i></div>
                                 <div class="py-1">{{ similar_game.age }} ago</div>
                             </div>                           
                         </div>
@@ -67,5 +67,29 @@
         {% else %}
             <p>No Games</p>
         {% endif %}                    
+    </div>
+    <div>
+
+        <h2>Comments</h2>
+        <form action="/action_page.php">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Username" id="username">
+            </div>
+            <div class="combuttonIn form-group">
+                <textarea class="comtextarea form-control" rows="3" placeholder="Comment"></textarea>
+                <button type="submit" class="comsendbtn btn btn-info m-1">Submit</button>
+            </div>
+        </form>
+
+        <div class="media border p-3">
+            <div class="my-1 mx-2 rounded-circle bg-info" style="width:60px; height: 60px;">
+                <i class="fas fa-user fa-3x px-2 py-1"></i>
+            </div>
+            <div class="media-body">
+                <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
+                <p>Lorem ipsum...</p>
+            </div>
+        </div>
+
     </div>
 {% endblock %}

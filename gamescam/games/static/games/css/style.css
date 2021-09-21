@@ -8,3 +8,19 @@
   position: absolute;
   transform: translate(-50%, -50%);
 }
+
+.combuttonIn {
+  position: relative;
+}
+
+.comtextarea {
+  resize: none;
+}
+
+
+.comsendbtn {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  z-index: 2;
+}

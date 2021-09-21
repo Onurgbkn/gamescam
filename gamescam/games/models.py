@@ -27,7 +27,7 @@ class Game(models.Model):
     thumbnail = models.ImageField(upload_to='gimgs/')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(max_length=30, unique=True, blank=True)
+    slug = models.SlugField(max_length=50, unique=True, blank=True)
     tags = models.ManyToManyField('Tag')
     
     def save(self, *args, **kwargs):
@@ -57,6 +57,12 @@ class Game(models.Model):
     
     def age(self):
         return timesince(self.created).split(', ')[0]
+    
+    def likerate(self):
+        if self.likes + self.dislikes == 0:
+            return 50
+        else:
+            return int(self.likes/(self.likes + self.dislikes) * 100)
         
     
     
