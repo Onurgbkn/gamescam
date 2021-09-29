@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="card">
+    <div class="card bg-light">
         <div class="gameplayimg text-info">
             <i class="fas fa-play fa-8x"></i>
             <img class="card-img-top" src="{{ game.thumbnail.url }}" alt="Card image cap">
@@ -43,7 +43,7 @@
 
             {% for similar_game in similar_games %}
                 <div class="col pb-3 px-2">
-                    <div class="card h-100">
+                    <div class="card bg-light h-100">
                         <a href="{% url 'gameplay' similar_game.slug %}">
                             <img class="card-img-top" style="height: 7rem;" src="{{ similar_game.thumbnail.url }}" alt="Card image cap">
                         </a>
@@ -71,25 +71,28 @@
     <div>
 
         <h2>Comments</h2>
-        <form action="/action_page.php">
+        <form action="{% url 'comment' game.slug %}" method="post">
+        {% csrf_token %}
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" id="username">
+                <input type="text" class="form-control" placeholder="Username" name="username">
             </div>
             <div class="combuttonIn form-group">
-                <textarea class="comtextarea form-control" rows="3" placeholder="Comment"></textarea>
+                <textarea class="comtextarea form-control" rows="3" placeholder="Comment" name="comment"></textarea>
                 <button type="submit" class="comsendbtn btn btn-info m-1">Submit</button>
             </div>
         </form>
 
+        {% for comment in game.comment_set.all %}
         <div class="media border p-3">
             <div class="my-1 mx-2 rounded-circle bg-info" style="width:60px; height: 60px;">
                 <i class="fas fa-user fa-3x px-2 py-1"></i>
             </div>
             <div class="media-body">
-                <h4>John Doe <small><i>Posted on February 19, 2016</i></small></h4>
-                <p>Lorem ipsum...</p>
+                <h4>{{ comment.author }}<small><i>Posted on {{ comment.created }}</i></small></h4>
+                <p>{{ comment.text }}</p>
             </div>
         </div>
+        {% endfor %}
 
     </div>
 {% endblock %}

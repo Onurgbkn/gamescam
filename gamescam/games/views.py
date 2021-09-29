@@ -1,8 +1,10 @@
 from django import template
+from django.http.response import HttpResponse, HttpResponseRedirect
 from . models import Game
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.db.models import F # for the view count
 import random # for the random game order
+from django.urls import reverse
 
 
 # Create your views here.
@@ -34,3 +36,9 @@ def gameplay(request, slug):
     }
 
     return render(request, 'games/gameplay.html', context)
+
+def comment(request, slug):
+    game = get_object_or_404(Game, slug=slug)
+    
+    game.comment_set.create(author=request.POST['username'], text=request.POST['comment'])
+    return HttpResponseRedirect(reverse('gameplay', args=(game.slug,)))

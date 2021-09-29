@@ -11,7 +11,7 @@
 
                         {% for game in game_list %}
                             <div class="col pb-3">
-                                <div class="card">
+                                <div class="card bg-light">
                                     <a href="{% url 'gameplay' game.slug %}">
                                         <img class="card-img-top" style="height: 10rem;" src="{{ game.thumbnail.url }}" alt="Card image cap">
                                     </a>

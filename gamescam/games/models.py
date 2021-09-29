@@ -76,7 +76,7 @@ class Comment(models.Model):
     text = models.TextField()
     likes = models.IntegerField(default=0)
     dislikes = models.IntegerField(default=0)
-    state = models.CharField(max_length=5, choices=STATES) # ok, nay, hold
+    state = models.CharField(max_length=5, choices=STATES, default='hold') # ok, nay, hold
     created = models.DateTimeField(auto_now_add=True, blank=True)
     
     def __str__(self):
