@@ -24,7 +24,7 @@
             </a>
             <div class="d-flex justify-content-center">
                 <div class="py-1 px-3"><i class="far fa-eye">{{ game.viewcount }}</i></div>
-                <div class="py-1 px-3"><i class="far fa-thumbs-up">%{% widthratio game.likes game.dislikes 100 %}</i></div>
+                <div class="py-1 px-3"><i class="far fa-thumbs-up">%{{ game.likerate }}</i></div>
                 <button type="button" class="btn btn-info"><i class="fas fa-thumbs-up"></i></button>
                 <button type="button" class="btn btn-danger"><i class="fas fa-thumbs-down"></i></button>
                 <div class="py-1 px-3">{{ game.age }} ago</div>
@@ -71,13 +71,23 @@
     <div>
 
         <h2>Comments</h2>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info"> {{ message }} </div>
+        {% endfor %}
+        {% endif %}
+        
         <form action="{% url 'comment' game.slug %}" method="post">
         {% csrf_token %}
+            {{ form.non_field_errors }}
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Username" name="username">
+                {{ form.username.errors }}
+                {{ form.username }}
             </div>
             <div class="combuttonIn form-group">
-                <textarea class="comtextarea form-control" rows="3" placeholder="Comment" name="comment"></textarea>
+                {{ form.text.errors }}
+                {{ form.text }}
                 <button type="submit" class="comsendbtn btn btn-info m-1">Submit</button>
             </div>
         </form>
